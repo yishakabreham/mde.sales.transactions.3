@@ -1,4 +1,5 @@
-# mde.sales.transactions.assignment3
+# assignment 3
+# Refactoring, ATL, Acceleo
 
 Refactoring 
 1. Deleted transactionType attribute from transaction metaclass
