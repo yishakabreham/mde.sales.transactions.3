@@ -1,0 +1,69 @@
+-- @nsURI MM=http://www.sales.org/assignment2
+-- @nsURI MM1=http://www.sales.refactored.org/assignment3
+
+module model2modelTransformation;
+create OUT : MM1 from IN : MM;
+
+helper context MM!Transaction def: isCashSales(): Boolean = 
+	if self.transactionType.toString() = 'CashSales' then
+		true
+	else
+		false
+	endif;
+
+rule Company2Company{
+	from s: MM!Company
+	to t: MM1!Company(
+			tradeName <- s.name,
+			stock <- s.store,
+			cashSales <- s.transaction,
+			creditSales <- s.transaction
+	)
+}
+
+rule Store2Stock{
+	from s: MM!Store
+	to t: MM1!Stock(
+		name <- s.name,
+		item <- s.item	
+	)
+}
+
+rule Item2Item{
+	from s: MM!Item
+	to t: MM1!Item(
+		code <- s.code,
+		name <- s.name,
+		unitAmount <- s.unitPrice
+	)
+}
+
+rule Price2Price{
+	from s: MM!Price
+	to t: MM1!Price(
+		sellingPrice <- s.sellingPrice	
+	)
+}
+
+rule Transaction2CashSales {
+	from s : MM!Transaction (s.isCashSales())
+	to t : MM1!CashSales (			
+			lineItems <- s.lineItem
+	)
+}
+
+rule Transaction2CreditSales {
+	from s : MM!Transaction (not s.isCashSales())
+	to t : MM1!CreditSales (			
+			lineItems <- s.lineItem
+	)
+}
+
+rule LineItem2LineItem {
+	from s : MM!LineItem
+	to t : MM1!LineItem (
+			quantity <- s.quantity,
+			total <- s.subTotal,
+			item <- s.item
+	)
+}
