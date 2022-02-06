@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignement_2:Company
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:assignement_2="http://www.example.org/assignement_2"
+    xsi:schemaLocation="http://www.example.org/assignement_2 assignement_2.ecore"
+    name="Conad Hypermarket"
+    codice="CO123GH77G124">
+  <address street="Via Albert Sabin"
+      city="L'Aquila"
+      country="Italy"
+      telephone="+39 351 879 8225"/>
+  <stock name="Mian Stock">
+    <item name="Dove"
+        code="ITM-00001-22"
+        batchNumber="BH-00001-22"
+        description="Soap"
+        uom="PCS"
+        availableNumber="120"
+        isActive="true">
+      <unitPrice
+          sellingPrice="2.5"/>
+    </item>
+    <item name="Sugar 500g"
+        code="ITM-00002-22"
+        batchNumber="BH-00002-22"
+        description="Sugar"
+        uom="KG"
+        availableNumber="100"
+        isActive="true">
+      <unitPrice
+          sellingPrice="1.5"/>
+    </item>
+    <item name="Honey 1000g"
+        code="ITM-00004-22"
+        batchNumber="BH-00004-22"
+        description="Candel"
+        uom="KG"
+        availableNumber="30"
+        isActive="true">
+      <unitPrice
+          sellingPrice="2.2"/>
+    </item>
+  </stock>
+  <stock name="Reseve Stock">
+    <item name="Salt 350g"
+        code="ITM-00003-22"
+        batchNumber="BH-00003-22"
+        description="Salt"
+        uom="KG"
+        availableNumber="20"
+        isActive="true">
+      <unitPrice
+          sellingPrice="0.9"/>
+    </item>
+  </stock>
+  <transaction
+      transactionNumber="CS-00001-22"
+      issuedDate="0028-05-13T00:00:00.000+0200">
+    <customer
+        name="Elias"
+        surName="John"
+        identityNumber="E-00001"
+        phoneNumber="+39 0862 313433"/>
+    <lineItems
+        code="Li-00001"
+        quantity="12.0"
+        subTotal="100.0"
+        item="//@stock.0/@item.0"/>
+    <lineItems
+        code="Li-00001"
+        subTotal="100.0"
+        item="//@stock.0/@item.1"/>
+  </transaction>
+  <transaction
+      transactionNumber="CS-00002-22"
+      issuedDate="0029-05-14T00:00:00.000+0200"
+      transactionType="CreditSales"
+      paymentMethod="Credit">
+    <customer
+        name="Yishak Abreham"
+        surName="Gebremichael"
+        identityNumber="E-00002"
+        phoneNumber="+39 0862 313433"/>
+    <operator
+        name="Shrawan"
+        surName="Bishowkarma"
+        employeeId="E-00002"/>
+    <lineItems
+        code="Li-00001"
+        quantity="10.0"
+        subTotal="20.0"
+        item="//@stock.0/@item.1"/>
+    <card customer="//@transaction.1/@customer"
+        cardNumber="5756-3434-4656-4566"
+        expiryDate="08/2022"/>
+  </transaction>
+  <transaction
+      transactionNumber="CS-00003"
+      issuedDate="0014-10-13T00:00:00.000+0200">
+    <customer
+        name="Shrawan"
+        surName="Bishowkarma"
+        identityNumber="E-00003"
+        phoneNumber="+39 0862 313433"/>
+    <lineItems
+        code="Li-00001"
+        quantity="2.0"
+        subTotal="20.0"
+        item="//@stock.1/@item.0"/>
+  </transaction>
+  <transaction
+      transactionNumber="CS-00004"
+      issuedDate="0010-02-11T00:00:00.000+0200">
+    <customer
+        name="Maliha"
+        surName="Maliha"
+        identityNumber="E-00004"
+        phoneNumber="+39 0862 313433"/>
+    <lineItems
+        code="Li-00001"
+        quantity="1.0"
+        subTotal="1.4"
+        item="//@stock.0/@item.0"/>
+  </transaction>
+</assignement_2:Company>
